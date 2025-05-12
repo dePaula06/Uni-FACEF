@@ -19,8 +19,6 @@ function faixaEtaria(){
     while (i <= 8){
         idade = prompt(`Digite a idade da pessoa ${i}: `)
         idade = Number(idade)
-        i ++
-        total ++
 
         if(idade <= 15){
             faixa1 ++
@@ -30,9 +28,15 @@ function faixaEtaria(){
             faixa3 ++
         } else if(idade >= 46 && idade <= 60){
             faixa4 ++
-        } else{
+        } else if(idade >= 61 && idade <=145){
             faixa5 ++
+        } else{
+            alert(`Idade inválida`)
+            continue
         }
+
+        i ++
+        total ++
     }
 
     primeiraFaixa = (faixa1 / total) * 100
