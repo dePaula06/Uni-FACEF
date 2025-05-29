@@ -11,7 +11,7 @@ function ex07() {
     mediaAltura = 0
     porcentagemMenos40Kg = 0
 
-    for ( i = 0; i < 5; i++){
+    for ( i = 1; i <= 5; i++){
         do{
             idade = prompt(`Digite a ${i}º sua idade: `)
             idade = Number(idade)
