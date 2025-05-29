@@ -13,17 +13,17 @@ function ex07() {
 
     for ( i = 0; i < 5; i++){
         do{
-            idade = prompt(`Digite a sua idade: `)
+            idade = prompt(`Digite a ${i}º sua idade: `)
             idade = Number(idade)
         } while( idade <= 0)
 
         do{
-            altura = prompt(`Digite a sua altura em cm: `)
+            altura = prompt(`Digite a ${i}º altura em cm: `)
             altura = Number(altura)
         } while( altura <= 0)
 
         do{
-            peso = prompt(`Digite seu peso em kg: `)
+            peso = prompt(`Digite o ${i}º peso em kg: `)
             peso = Number(peso)
         } while( peso <= 0)
 
