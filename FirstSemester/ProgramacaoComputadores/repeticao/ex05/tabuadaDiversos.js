@@ -1,3 +1,9 @@
+/*
+
+Faça um programa que mostre as tabuadas dos números de 1 a 10.
+
+*/
+
 function tabuada() {
 
     let i, k, result, mensagem

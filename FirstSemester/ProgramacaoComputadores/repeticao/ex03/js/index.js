@@ -1,3 +1,10 @@
+/*
+Faça um programa que receba a idade de oito pessoas, calcule e mostre:
+a) a quantidade de pessoas em cada faixa etária;
+b) a porcentagem de pessoas na primeira faixa etária com relação ao total de pessoas.
+c) a porcentagem de pessoas na última faixa etária com relação ao total de pessoas
+*/
+
 function faixaEtaria(){
 
     let idade
