@@ -1,0 +1,38 @@
+Vetor -> estrutura de dados
+         unidimensional
+
+    posições: 
+    -----------------------------
+        0   1   2   3   ...
+    -----------------------------
+
+    exemplo:
+        nome da variável: rua
+        número da casa: posição
+
+    -----------------------------------
+        Rua das Acácias, 320
+    -----------------------------------
+    **Necessitamos de ambas as informações para encontrar o valor procurado.**
+
+
+    ***********************************
+              Declarando Vetor
+
+                let personagem = []
+
+        Atribuindo valor ao vetor
+
+            personagem.push("Timão")
+            personagem.push("Pumba")
+            personagem.push("Simba")
+
+          Visualizar os itens do vetor
+
+                    personagem
+
+          Visualizar o taanho do vetor
+
+                personagem.length
+
+    **************************************
