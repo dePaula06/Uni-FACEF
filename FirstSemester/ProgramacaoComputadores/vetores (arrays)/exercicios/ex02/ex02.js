@@ -13,8 +13,10 @@ function ex02(){
     for( i = 0; i < 10; i++){
         if( n[i] % 2 == 0){
             par.push((n[i] + 10))
+            // n[i] = n[i] + 10
         } else{
             impar.push((n[i] * 5))
+            // n[i] = n[i] * 5
         }
     }
 

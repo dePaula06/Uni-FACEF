@@ -31,7 +31,7 @@ Vetor -> estrutura de dados
 
                     personagem
 
-          Visualizar o taanho do vetor
+          Visualizar o tamanho do vetor
 
                 personagem.length
 
