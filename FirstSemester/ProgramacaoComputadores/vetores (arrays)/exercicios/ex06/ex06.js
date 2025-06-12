@@ -18,3 +18,33 @@ ________________________________________________________________________________
         O número 7 aparece 4 vezes, nas posições: 1, 3, 6, 10
     
 */
+
+function ex06() {
+
+    let i
+    let vet = []
+    let nBusca
+    let contIguais
+    let vetPosicoes = []
+
+    contIguais = 0
+
+    for( i = 0; i < 12; i++) {
+        vet.push(Number(prompt(`Digite o ${i+1}º número inteiro: `)))
+    }
+
+    nBusca = Number(prompt(`Digite o número que deve ser buscado: `))
+
+    for( i =  0; i < 12; i++) {
+        if( vet[i] == nBusca){
+            contIguais++
+            vetPosicoes.push(i)
+        }
+    }
+
+    if(contIguais > 0){
+        alert(`O número buscado é ${nBusca}, e ele está no vetor.\n` + `Apareceu: ${contIguais} vezes\n` + `Nas posições: ${vetPosicoes}\n` + ``)
+    } else{
+        alert(`Não existe o número ${nBusca} no vetor`)
+    }
+}
