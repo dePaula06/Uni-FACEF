@@ -24,19 +24,23 @@ function ex04() {
     let media
     let cont = 0
 
+    media = 0
+
     for( i = 0; i < 8; i++) {
 
         n.push(Number(prompt(`Informe a ${i + 1}ª nota: `)))
 
-        media += n
+        media += n[i]
 
-        if( n > 7 ){
+        if( n[i] > 7 ){
             acimaMedia.push(n[i])
             cont++
         }
 
     }
 
-    // Terminar questão
+    media = media / 8
+
+    alert(`Média: ${media}\n` + `Número de notas acima da média: ${cont}\n` + `Notas acima da média: ${acimaMedia}`)
 
 }
