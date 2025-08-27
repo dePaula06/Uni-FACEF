@@ -36,7 +36,7 @@ function ex03(){
         matriz[l] = []
         for(let c = 0; c < 5; c++){
             do{
-                matriz[l][c] = prompt(`Informe a poluição da região ${regioes[l]}, no dia ${dias[c]}: `)
+                matriz[l][c] = Number(prompt(`Informe a poluição da região ${regioes[l]}, no dia ${dias[c]}: `))
             } while (matriz[l][c] < 0 || matriz[l][c] > 500)
         }
     }
@@ -109,9 +109,7 @@ function ex03(){
     let mediaRegioes = []
     let somaRegiao = 0
     let mediaRegiao = 0
-    let menorMedia = mediaRegioes[0]
-    let menorMediaRegiao = 0
-
+    
     for(let l = 0; l < 5; l++){
         mediaRegiao = 0
         somaRegiao = 0
@@ -121,7 +119,10 @@ function ex03(){
         mediaRegiao = somaRegiao / matriz.length
         mediaRegioes[l] = mediaRegiao
     }
-
+    
+    let menorMedia = mediaRegioes[0]
+    let menorMediaRegiao = 0
+    
     for(let l = 0; l < 5; l++){
         if(mediaRegioes[l] < menorMedia){
             menorMedia = mediaRegioes[l]
