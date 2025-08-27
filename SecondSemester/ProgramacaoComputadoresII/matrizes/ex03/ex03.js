@@ -36,7 +36,7 @@ function ex03(){
         matriz[l] = []
         for(let c = 0; c < 5; c++){
             do{
-                matriz[l][c] = prompt(`Informe a poluição da região ${regioes[l]}, no dia ${c}: `)
+                matriz[l][c] = prompt(`Informe a poluição da região ${regioes[l]}, no dia ${dias[c]}: `)
             } while (matriz[l][c] < 0 || matriz[l][c] > 500)
         }
     }
@@ -52,7 +52,7 @@ function ex03(){
         somaDiagonalPrincipal += matriz[l][l]
     }
 
-    mediaDiagonalPrincipal = somaDiagonalPrincipal / matriz.length
+    mediaDiagonalPrincipal = somaDiagonalPrincipal / 5
     console.log(`Elementos da diagonal principal: ${diagonalPrincipal}`);
     console.log(`A média da diagonal principal é: ${mediaDiagonalPrincipal}`);
 
@@ -67,7 +67,7 @@ function ex03(){
         somaDiagonalSecundaria += matriz[l][4-l]
     }
 
-    mediaDiagonalSecundaria = somaDiagonalSecundaria / matriz.length
+    mediaDiagonalSecundaria = somaDiagonalSecundaria / 5
     console.log(`Elementos da diagonal secundária: ${diagonalSecundaria}`);
     console.log(`A média da diagonal secundária é: ${mediaDiagonalSecundaria}`);
 
@@ -128,5 +128,8 @@ function ex03(){
             menorMediaRegiao = l
         }
     }
+
+    console.log(`A região que teve a menor média durante os 5 dias foi: ${regioes[menorMediaRegiao]}`);
+    
 
 }
