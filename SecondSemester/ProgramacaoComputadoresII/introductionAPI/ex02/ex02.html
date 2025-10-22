@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    
+    <meta charset="UTF-8" />
+    
+    <title>Galeria de Fotos com API Pública</title>
+  </head>
+  <body>
+    
+    <h1>Galeria</h1>
+     <button onclick="carregarGaleria()">Carregar Galeria</button>  
+    <div id="galeria"></div>
+    
+    <script>
+      async function carregarGaleria() {
+        try {
+          const resposta = await fetch(
+            "https://jsonplaceholder.typicode.com/photos?_limit=10"
+          );
+          // a API retornou uma string, precisamos converter para JSON
+          const fotos = await resposta.json();
+          const galeria = document.getElementById("galeria");
+          galeria.innerHTML = ""; // limpa lista
+
+          for (let i = 0; i < fotos.length; i++) {
+
+            const title = document.createElement("h4");
+            title.textContent = `${fotos[i].title}`;
+
+            
+
+            galeria.appendChild(title);
+            
+          }
+        } catch (erro) {
+          console.error("Erro ao carregar usuários:", erro);
+          alert("Não foi possível carregar os dados da API.");
+        }
+      }
+    </script>
+  </body>
+</html>

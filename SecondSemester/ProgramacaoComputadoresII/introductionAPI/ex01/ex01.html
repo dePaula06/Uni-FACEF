@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    
+    <meta charset="UTF-8" />
+    
+    <title>Consulta de Endereços via API Pública</title>
+  </head>
+  <body>
+    
+    <h1>Lista de Endereços</h1>
+     <button onclick="carregarEnderecos()">Consultar Endereços</button>  
+    <ul id="listaEnderecos"></ul>
+    
+    <script>
+      async function carregarEnderecos() {
+        try {
+          const resposta = await fetch(
+            "https://jsonplaceholder.typicode.com/users"
+          );
+          // a API retornou uma string, precisamos converter para JSON
+          const enderecos = await resposta.json();
+          const lista = document.getElementById("listaEnderecos");
+          lista.innerHTML = ""; // limpa lista
+          for (let i = 0; i < enderecos.length; i++) {
+            const li = document.createElement("li");
+
+            li.textContent = `
+            Nome: ${enderecos[i].name}`;
+
+
+            const liAddress = document.createElement("li");
+
+            liAddress.textContent = `
+            Endereço: ${enderecos[i].address.street}, 
+            ${enderecos[i].address.city} - 
+            ${enderecos[i].address.zipcode}`;
+
+            // associa a lista
+            lista.appendChild(li);
+            lista.appendChild(liAddress)
+          }
+        } catch (erro) {
+          console.error("Erro ao carregar endereços:", erro);
+          alert("Não foi possível carregar os dados da API.");
+        }
+      }
+    </script>
+  </body>
+</html>
