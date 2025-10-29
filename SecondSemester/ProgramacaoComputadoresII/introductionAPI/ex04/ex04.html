@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Busca de Filmes com OMDb API</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f7fa;
+        text-align: center;
+        padding: 30px;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      input {
+        width: 250px;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-right: 10px;
+      }
+
+      button {
+        padding: 8px 15px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      #resultado {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 350px;
+        text-align: left;
+      }
+
+      .card img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+
+      .info strong {
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎬 Busca de Filmes</h1>
+
+    <input
+      type="text"
+      id="nomeFilme"
+      placeholder="Digite o nome do filme..."
+    />
+    <button onclick="buscarFilme()">Buscar</button>
+
+    <div id="resultado"></div>
+
+    <script>
+      async function buscarFilme() {
+        const nome = document.getElementById("nomeFilme").value.trim();
+        const resultado = document.getElementById("resultado");
+        resultado.innerHTML = "";
+
+        if (!nome) {
+          alert("Digite o nome de um filme!");
+          return;
+        }
+
+        const apiKey = "5127f5b"; // substitua pela sua chave real
+        const url = `https://www.omdbapi.com/?t=${encodeURIComponent(nome)}&apikey=${apiKey}`;
+
+        try {
+          const resposta = await fetch(url);
+          const filme = await resposta.json();
+
+          if (filme.Response === "False") {
+            resultado.innerHTML = `<p>Filme não encontrado.</p>`;
+            return;
+          }
+
+          const card = document.createElement("div");
+          card.classList.add("card");
+
+          card.innerHTML = `
+            <img src="${filme.Poster !== "N/A" ? filme.Poster : "https://via.placeholder.com/300x450?text=Sem+Imagem"}" alt="Poster do filme">
+            <h2>${filme.Title} (${filme.Year})</h2>
+            <p class="info"><strong>Gênero:</strong> ${filme.Genre}</p>
+            <p class="info"><strong>Diretor:</strong> ${filme.Director}</p>
+            <p class="info"><strong>Elenco:</strong> ${filme.Actors}</p>
+            <p class="info"><strong>Nota IMDb:</strong> ⭐ ${filme.imdbRating}</p>
+            <p class="info"><strong>Sinopse:</strong> ${filme.Plot}</p>
+          `;
+
+          resultado.appendChild(card);
+        } catch (erro) {
+          console.error("Erro ao buscar filme:", erro);
+          alert("Ocorreu um erro ao buscar o filme. Tente novamente.");
+        }
+      }
+    </script>
+  </body>
+</html>

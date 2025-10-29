@@ -25,21 +25,22 @@ function aumentarSalario(funcionarios) {
 }
 
 function buscarSalarioPeloNome(funcionarios, nomeFuncionario) {
-    let funcionarioEncontrado = ""
+    let funcionarioEncontrado = false
     for(let i = 0; i < funcionarios.length; i++){
         if( funcionarios[i].nome === nomeFuncionario ){
-            funcionarioEncontrado = funcionarios[i].nome
             console.log(funcionarios[i].salario);
+            funcionarioEncontrado = true
         }
     }
 
-    if( funcionarioEncontrado === "") {
+    if( !funcionarioEncontrado) {
         alert("Funcionário não encontrado!")
     }
 
 }
 
 function atualizarCargo(funcionarios, nomeFuncionario) {
+    let funcionarioEncontrado = false
     for(let i = 0; i < funcionarios.length; i++){
         if( funcionarios[i].nome === nomeFuncionario){
             funcionarios[i] = ({
@@ -47,21 +48,28 @@ function atualizarCargo(funcionarios, nomeFuncionario) {
                 cargo: prompt(`Digite o nome do novo cargo de ${funcionarios[i].nome}: `),
                 salario: funcionarios[i].salario
             })
+            funcionarioEncontrado = true
             return
         }
-        alert(`Funcionário não encontrado!`)
+        if( !funcionarioEncontrado) {
+        alert("Funcionário não encontrado!")
+    }
     }
 }
 
 function removerFuncionario(funcionarios, nomeFuncionario){
+    let funcionarioEncontrado = false
     for(let i = 0; i < funcionarios.length; i++){
         if(funcionarios[i].nome === nomeFuncionario){
             funcionarios.splice(i, 1)
+            funcionarioEncontrado = true
             return
         }
     }
 
-    alert('Funcionário não encontrado!')
+    if( !funcionarioEncontrado) {
+        alert("Funcionário não encontrado!")
+    }
 }
 
 function exibirMediaSalarial(funcionarios) {
@@ -77,6 +85,28 @@ function exibirMediaSalarial(funcionarios) {
     console.log(`A média salarial da empresa é: ${media}`);
 }
 
+function promocaoAutomatica(funcionarios) {
+    for(let i = 0; i < funcionarios.length; i++){
+        if(funcionarios[i].salario < 2000) {
+            funcionarios[i].salario = funcionarios[i].salario * 1.15
+            funcionarios[i].cargo = "Analista Junior"
+        }
+    }
+}
+
+function maiorSalario(funcionarios) {
+    let posicao = 0
+    let maiorSalario = funcionarios[0].salario
+    for(let i = 0; i < funcionarios.length; i++) {
+        if(funcionarios[i].salario > maiorSalario){
+            maiorSalario = funcionarios[i].salario
+            posicao = i
+        }
+    }
+    console.log(`O funcionário com o maior salário é: ${funcionarios[posicao].nome}`);
+    
+}
+
 function main() {
 
     let vetor = []
@@ -87,13 +117,15 @@ function main() {
     do {
         opcao = Number(prompt(`
         1 - Cadastrar novo funcionário |
-         2 - Listar o nome dos funcionários |
-          3 - Aumentar o salário de todos em 10% |
-           4 - Buscar salário pelo nome |
-            5 - Atualizar cargo de funcionário |
-             6 - Remover funcionário da empresa |
-              7- Exibir média salarial da empresa |
-               8 - Encerrar o programa
+        2 - Listar o nome dos funcionários |
+        3 - Aumentar o salário de todos em 10% |
+        4 - Buscar salário pelo nome |
+        5 - Atualizar cargo de funcionário |
+        6 - Remover funcionário da empresa |
+        7- Exibir média salarial da empresa |
+        8 - Promoção automática |
+        9 - Funcionário com maior salário
+        10 - Encerrar o programa
                 `))
 
         switch(opcao) {
@@ -115,12 +147,16 @@ function main() {
                     break;
             case 7: exibirMediaSalarial(vetor)
                 break;
-                case 8: alert("Programa encerrado");
+            case 8: promocaoAutomatica(vetor);
+                break;
+            case 9: maiorSalario(vetor);
+                break;
+                case 10: alert("Programa encerrado");
                 break;
             default: alert("Opção inválida");
                 break;
         }
-    } while (opcao != 8)
+    } while (opcao != 10)
     console.log(vetor);
 }
 
