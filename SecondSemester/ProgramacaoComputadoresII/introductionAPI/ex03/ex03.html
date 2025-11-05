@@ -110,9 +110,9 @@
             const content = document.createElement("p");
             content.textContent = post.body;
 
+            container.appendChild(card);
             card.appendChild(title);
             card.appendChild(content);
-            container.appendChild(card);
           });
         } catch (erro) {
           console.error("Erro ao carregar posts:", erro);
