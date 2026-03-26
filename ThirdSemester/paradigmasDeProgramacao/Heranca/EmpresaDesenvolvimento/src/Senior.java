@@ -13,4 +13,32 @@ public class Senior extends Desenvolvedor{
 
     }
 
+    public float getVerbaLider() {
+        return verbaLider;
+    }
+
+    public void setVerbaLider(float verbaLider) {
+        this.verbaLider = verbaLider;
+    }
+
+    @Override
+    public String toString() {
+        return "Junior{" +
+                super.toString() +
+                "verbaLider: " + verbaLider + "\'" +
+                "}";
+    }
+
+    @Override
+    public void codar(){
+        System.out.println("Senior definindo arquitetura do software e liderando pessoas");
+    }
+
+    @Override
+    public float calcularBonus() {
+
+        return super.calcularBonus() + this.salarioBase * 0.30f;
+
+    }
+
 }

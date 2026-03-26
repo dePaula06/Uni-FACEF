@@ -13,4 +13,25 @@ public class Junior extends Desenvolvedor {
 
     }
 
+    public String getMentor() {
+        return mentor;
+    }
+
+    public void setMentor(String mentor) {
+        this.mentor = mentor;
+    }
+
+    @Override // anulação de metodo
+    public void codar() {
+        System.out.println("Junior desenvolvendo código com mentoria de " + this.mentor);
+    }
+
+    @Override
+    public String toString(){
+        return "Junior{" +
+                super.toString() +
+                "mentor: " + mentor + "\'" +
+                "}";
+    }
+
 }
