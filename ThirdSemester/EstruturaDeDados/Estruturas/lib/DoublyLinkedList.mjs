@@ -10,11 +10,11 @@ class Node {
 
 export default class DoublyLinkedList {
 
-    #head 
+    #head
     #tail
     #count
 
-    constructor(){
+    constructor() {
         this.#head = null;
         this.#tail = null;
         this.#count = 0;
@@ -24,7 +24,7 @@ export default class DoublyLinkedList {
         this.#count === 0;
     }
 
-    get count(){
+    get count() {
         return this.#count;
     }
 
@@ -32,15 +32,15 @@ export default class DoublyLinkedList {
     #findNode(pos) {
         let node;
         // nodo encontra-se na primeira metade da lista
-        if( pos < this.#count / 2){
+        if (pos < this.#count / 2) {
             node = this.#head
-            for( let i = 0; i < pos; i++){
+            for (let i = 0; i < pos; i++) {
                 node = node.next;
             }
         }// nodo encontra-se na segunda metade da lista 
-        else{
+        else {
             node = this.#tail
-            for( let i = (this.#count - 1); i > pos; i--){
+            for (let i = (this.#count - 1); i > pos; i--) {
                 node = node.prev
             }
         }
@@ -54,7 +54,7 @@ export default class DoublyLinkedList {
         let inserted = new Node(val);
 
         // 1º caso: lista vazia
-        if(this.isEmpty){
+        if (this.isEmpty) {
 
             this.#head = inserted;
             this.#tail = inserted;
@@ -62,7 +62,7 @@ export default class DoublyLinkedList {
         }
 
         //2º caso: inserção na primeira posição
-        else if(pos === 0){
+        else if (pos === 0) {
 
             inserted.next = this.#head;
             this.#head.prev = inserted;
@@ -71,7 +71,7 @@ export default class DoublyLinkedList {
         }
 
         // 3º caso: inserção na última posição
-        else if(pos >= this.#count) {
+        else if (pos >= this.#count) {
 
             inserted.prev = this.#tail;
             this.#tail.next = inserted;
@@ -90,10 +90,112 @@ export default class DoublyLinkedList {
             inserted.next = nodePos
             nodePos.prev = inserted
 
-        } 
+        }
 
         this.#count++
 
+    }
+
+    // metodo de atalho para inserção na primeira posição
+    insertHead(val) {
+        this.insert(0, val)
+    }
+
+    // metodo de atalho para inserção na última posição
+    insertTail(val) {
+        this.insert(this.#count, val)
+    }
+
+    // metodo para remover um nodo da lista
+    remove(pos) {
+        // 1º caso: lista vazia ou posição fora dos limites
+        if (this.isEmpty || pos < 0 || pos > this.#count - 1) {
+            return undefined
+        }
+
+        // 2º caso: remoção do primeiro nodo
+        let removed
+
+        if (pos === 0) {
+
+            removed = this.#head
+            this.#head = removed.next
+
+
+            if (this.#head) {
+                this.#head.prev = null
+            }
+
+            if (this.#count === 1) {
+                this.#tail = null
+            }
+        }
+
+        // 3º caso: remoção do último nodo
+        else if( pos === this.#count - 1){
+
+            removed = this.#tail
+            this.#tail = removed.prev
+
+            if(this.#tail){
+                this.#tail.next = null
+            }
+
+            if(this.#count === 1){
+                this.#head = null
+            }
+
+        }
+
+        // 4º caso: remoção em posição intermediária
+        else {
+
+            removed = this.#findNode(pos)
+            let before = removed.prev
+            let after = removed.next
+
+            before.next = after
+            after.prev = before
+
+        }
+
+        this.#count--
+
+        return removed.data
+    }
+
+    // metodo de atalho da primeira posição
+    removeHead(){
+
+        return this.remove(0)
+
+    }
+
+    // metodo de atalho da última posição
+    removeTail(){
+
+        return this.remove(this.#count - 1)
+        
+    }
+
+    peek(pos){
+
+        // lista vazia ou posição fora dos limites
+        if (this.isEmpty || pos < 0 || pos > this.#count - 1) {
+            return undefined
+        }
+
+        const node = this.#findNode(pos);
+        return node.data
+
+    }
+
+    peekHead(){
+        return this.peek(0)
+    }
+
+    peekTail(){
+        return this.peek(this.#count - 1)
     }
 
 }
