@@ -2,6 +2,8 @@
 
 
     console.log("\n========= O(1) =============\n");
+
+    const inicio = performance.now()
     
     function exampleO1(arr) {
         if(arr.length === 0) return null
@@ -10,6 +12,18 @@
 
     const arr = [5, 6, 7, 8, 9, 2, 3, 4]
     console.log(exampleO1(arr));
+
+    const fim = performance.now()
+    let tempoGasto = fim - inicio
+    
+    const memoriaPilhaMB = (arr * 4) / (1024 * 1024)
+    let memoriaTotalMB = 'N/A'
+        if(typeof process !== 'undefined' && process.memoryUsage()){
+            memoriaTotalMB = process.memoryUsage().heapUsed / 1024 / 1024
+        }
+        console.log("Tempo de execução: ", tempoGasto.toFixed(2), 'ms');
+        console.log("Memória estimada da pilha de chamadas: ", memoriaPilhaMB.toFixed(4), 'MB');
+        console.log("Memória total usada pelo processo: ", typeof memoriaTotalMB === 'number' ? memoriaTotalMB.toFixed(4) + ' MB' : memoriaTotalMB );
     
 
     // O(log n)

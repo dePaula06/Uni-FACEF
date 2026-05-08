@@ -28,12 +28,12 @@ function fatorial(n) {
     console.log("Tamanho da entrada: ", n);
     console.log("Resultado: ", resultado);
     console.log("Tempo de execução: ", tempoGasto.toFixed(6), 'ms');
-    console.log("Memória estimada da pilha de chamadas: ", memoriaPilhaMB.toFixed(2), 'MB');
-    console.log("Memória total usada pelo processo: ", typeof memoriaTotalMB === 'number' ? memoriaTotalMB.toFixed(2) + ' MB' : memoriaTotalMB );
+    console.log("Memória estimada da pilha de chamadas: ", memoriaPilhaMB.toFixed(4), 'MB');
+    console.log("Memória total usada pelo processo: ", typeof memoriaTotalMB === 'number' ? memoriaTotalMB.toFixed(4) + ' MB' : memoriaTotalMB );
     
     
     
 }
 
-const numero = 50
+const numero = 5000
 fatorial(numero)
