@@ -1,0 +1,36 @@
+/*
+    FATORIAL ITERATIVO
+
+5! = 5 * 4 * 3 * 2 * 1
+
+*/
+
+function fatorial(n) {
+    let result = 1
+    for(let i = n; i > 1; i--){
+        result *= i
+    }
+    return result
+}
+
+console.log("Fatorial de 5: ", fatorial(5));
+
+/*
+
+    FATORIAL RECURSIVO
+
+    5! = 5 * 4!
+    ...
+
+*/
+
+function fatorialRecursivo(n) {
+    if( n <= 1 ) {
+        return 1;
+    }
+
+    return n * fatorialRecursivo( n - 1 )
+
+}
+
+console.log(fatorialRecursivo(5));
