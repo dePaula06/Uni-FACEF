@@ -1,16 +1,53 @@
-# React + Vite
+# 🎓 Universidade Santo Agostinho
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema web para gerenciamento e manipulação de dados de alunos da Universidade Santo Agostinho.
 
-Currently, two official plugins are available:
+O projeto foi desenvolvido para a disciplina de **Estrutura de Dados**, utilizando uma estrutura de dados heterogênea dinâmica baseada em **Array de Objetos**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+A aplicação permite cadastrar alunos, calcular automaticamente suas médias e resultados, visualizar os alunos cadastrados e gerar relatórios utilizando diferentes algoritmos de ordenação.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📚 Sobre o projeto
 
-## Expanding the ESLint configuration
+O sistema foi desenvolvido com o objetivo de aplicar, na prática, conceitos de **Estrutura de Dados e Algoritmos de Ordenação**.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Cada aluno possui os seguintes dados:
+
+- Nome
+- RA
+- Idade
+- Sexo
+- Nota 1
+- Nota 2
+- Média
+- Resultado
+
+A média é calculada automaticamente pelo sistema:
+
+```text
+Média = (Nota 1 + Nota 2) / 2
+
+# 🚀 Como rodar o projeto
+
+O projeto é dividido em duas aplicações independentes:
+
+- `backend`: responsável pela API e manipulação dos dados dos alunos.
+- `frontend`: responsável pela interface gráfica da aplicação.
+
+É necessário executar os dois servidores simultaneamente.
+
+---
+
+## 📋 Pré-requisitos
+
+Antes de executar o projeto, certifique-se de possuir instalado:
+
+- [Node.js](https://nodejs.org/)
+- npm, que é instalado junto com o Node.js
+
+Para verificar se estão instalados:
+
+```bash
+node -v
+npm -v

@@ -1,4 +1,4 @@
-import students from "../data/student.js"
+import students from "../data/students.js"
 
 export function getStudents(req, res) {
     res.status(200).json(students)
@@ -19,7 +19,7 @@ export function createStudent(req, res) {
 
     const resultado = media >= 6
     ? "Aprovado"
-    : "Reporvado";
+    : "Reprovado";
 
     const newStudent = {
         id: Date.now(),

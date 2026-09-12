@@ -1,48 +1,43 @@
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
+import { useState } from "react";
+
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Alunos from "./pages/Alunos";
+import Cadastrar from "./pages/Cadastrar";
+import Relatorios from "./pages/Relatorios";
 
 function App() {
-  return (
-    <div className="container mt-5">
 
-      <Typography variant="h3">
-        StudentSort
-      </Typography>
+    const [pagina, setPagina] = useState("home");
 
-      <div className="row mt-4">
+    function navegar(paginaSelecionada) {
+        setPagina(paginaSelecionada);
+    }
 
-        <div className="col-md-4">
-          <div className="border rounded p-4">
-            <h4>Total de alunos</h4>
-            <h2>42</h2>
-          </div>
-        </div>
+    return (
+        <>
+            <Navbar
+                paginaAtual={pagina}
+                navegar={navegar}
+            />
 
-        <div className="col-md-4">
-          <div className="border rounded p-4">
-            <h4>Aprovados</h4>
-            <h2>31</h2>
-          </div>
-        </div>
+            {pagina === "home" && (
+                <Home navegar={navegar} />
+            )}
 
-        <div className="col-md-4">
-          <div className="border rounded p-4">
-            <h4>Reprovados</h4>
-            <h2>11</h2>
-          </div>
-        </div>
+            {pagina === "alunos" && (
+                <Alunos />
+            )}
 
-      </div>
+            {pagina === "cadastrar" && (
+                <Cadastrar navegar={navegar} />
+            )}
 
-      <Button
-        variant="contained"
-        sx={{ mt: 4 }}
-      >
-        Cadastrar aluno
-      </Button>
-
-    </div>
-  )
+            {pagina === "relatorios" && (
+                <Relatorios />
+            )}
+        </>
+    );
 }
 
-export default App
+export default App;
