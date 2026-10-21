@@ -126,7 +126,7 @@ export default class BinarySearchTree {
   Método público para excluir um nodo da árvore
   */
   remove(val) {
-    this.#root = this.removeNode(this.#root, val);
+    this.#root = this.#removeNode(this.#root, val);
   }
 
   /*
@@ -174,5 +174,54 @@ export default class BinarySearchTree {
       root = root.right;
       return root;
     }
+
+    //4.4: nodo de grau 1
+    /*
+    Precisamos encontrar:
+      1) o nodo de MAIOR valor da subárvore ESQUERDA; ou
+      2) o nodo de MENOR valor da subárvore DIREITA
+    */
+
+    // Nodo de menor valor da subárvore DIREITA 
+    const newRoot = this.#minNode(root.right)
+
+    root.data = newRoot.data
+
+    // Excluímos o valor
+    root.right = this.#removeNode(root.right, newRoot.data);
+
+    return root
   }
-}
+
+  /*
+  Método público que busca por um valor dentro da árvore
+    Retorna:
+      - true, caso o valor exista; ou
+      - falsem caso contrário
+  */
+
+    search(val) {
+      const node = this.#searchNode(this.#root, val);
+      return node !== null
+    }
+
+    /* Método privado #searchNode */
+    #searchNode(root, val) {
+      // 1º caso: a árvore está vazia
+      if(root === null) return null
+
+      // 2º caso: o valor procurado é MENOR que o valor da raiz
+      // continua busca pela subárvore ESQUERDA
+      if(val < root.data) return this.#searchNode(root.left, val);
+      
+      // 3º caso: o valor procurado é MAIOR que o valor da raiz
+      // continua busca pela subárvore DIREIRA  
+      if(val > root.data) return this.#searchNode(root.right, val);
+
+      // 4º caso: o valor procurado IGUAL ao valor da raiz
+      // o valor procurado foi encontrado e está em root
+      
+      
+      return root;
+    }
+  }
